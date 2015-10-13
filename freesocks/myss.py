@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 from HTMLParser import HTMLParser
-from threading import Thread
 import urllib2, json, random, sys, time, subprocess, signal
-from shadowsocks import local
 
 
 class codeParser(HTMLParser):
@@ -68,7 +66,7 @@ def main():
         p = subprocess.Popen('sslocal', stdout=subprocess.PIPE)
         print 'connection succeed'
         print 'password is to be refresh at ' + ':'.join(map(lambda x: str(x).rjust(2, '0'), nxt))
-        for i in range(interv - 1):
+        for i in range(interv):
             time.sleep(1)
             if is_exit:
                 print '\ntrying to stop...'
@@ -76,7 +74,7 @@ def main():
                 print 'done'
                 sys.exit()
         p.terminate()
-        time.sleep(2)
+        time.sleep(1)
 
 if __name__ == '__main__':
     main()
