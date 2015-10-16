@@ -72,8 +72,10 @@ def main():
                 print 'done'
                 sys.exit()
             now = time.localtime()[3:6]
+            print now
             if now[0] == nxt[0] and now[1] == nxt[1] and now[2] == nxt[2]:
                 p.terminate()
+                break
         
         time.sleep(1)
 
