@@ -21,5 +21,7 @@ License
 
 Todo List
 ------
-* network state detection & auto reconnect 
+* network state detection & auto reconnect
+* add exception handler on Windows
+
 
