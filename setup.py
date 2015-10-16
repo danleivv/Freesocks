@@ -10,4 +10,8 @@ setup(
     url = 'https://github.com/jne0915/freesocks',
     package = find_packages(),
     install_requires = ['shadowsocks'],
+    entry_point = """
+    [console_script]
+    freesocks = freesocks.myss:main
+    """,
 )
