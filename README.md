@@ -17,5 +17,5 @@ a socks5 agent on default port 1080.
 
 License
 ------
-MIT
+[MIT](http://opensource.org/licenses/MIT)
 
