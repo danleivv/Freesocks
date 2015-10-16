@@ -9,3 +9,6 @@ socks5 agent
 shadowsock and openssl are required
 <br>
 ### to be packed 
+### todo list
+* add parser
+* add entry point
