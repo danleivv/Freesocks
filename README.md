@@ -7,12 +7,12 @@ Special thanks to SHADOWSOCKS.
 
 Install
 ------
-`python setup.py install`<br>
+`python setup.py install`<br><br>
 Openssl is required.
 
 Usage
 ------
-`freesocks [local_port]`
+`freesocks [local_port]`<br><br>
 a socks5 agent on default port 1080.
 
 License
