@@ -11,7 +11,7 @@ setup(
     packages = find_packages(),
     install_requires = ['shadowsocks'],
     entry_points = """
-    [console_script]
+    [console_scripts]
     freesocks = freesocks.myss:main
     """,
 )
