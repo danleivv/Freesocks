@@ -1,14 +1,21 @@
-usage
-=======
-`python myss.py [port]`
-<br>
-default port: 1080
-<br>
-socks5 agent
-<br>
-shadowsock and openssl are required
-<br>
-### to be packed 
-### todo list
-* add parser
-* add entry point
+Freesocks (under building)
+========
+
+A free way to get through the GFW based on Shadowsocks, just for myself.<br>
+Thanks to the trial accounts on socks163.com.<br>
+Special thanks to SHADOWSOCKS.
+
+Install
+------
+`python setup.py install`<br>
+Openssl is required.
+
+Usage
+------
+`freesocks [local_port]`
+a socks5 agent on default port 1080.
+
+License
+------
+MIT
+
