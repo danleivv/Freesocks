@@ -73,7 +73,7 @@ def main():
         #         print 'done'
         #         sys.exit()
         while True:
-            sleep(0.5)
+            time.sleep(0.5)
             if is_exit:
                 print '\ntrying to stop...'
                 p.terminate()
