@@ -12,6 +12,6 @@ setup(
     install_requires = ['shadowsocks'],
     entry_points = """
     [console_scripts]
-    freesocks = myss:main
+    freesocks = freesocks.myss:main
     """,
 )
