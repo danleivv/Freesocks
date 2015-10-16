@@ -59,19 +59,11 @@ def main():
         now = time.localtime()[3:6]
         nxt = map(int, parser.time.split(':'))
         nxt[0] += 1
-        # interv = (nxt[0] - now[0]) * 3600 + (nxt[1] - now[1]) * 60 + nxt[2] - now[2]
         print 'password was posted at ' + parser.time
         print 'trying to connect...'
         p = subprocess.Popen('sslocal', stdout=subprocess.PIPE)
         print 'connection succeed'
         print 'password is to be refresh at ' + ':'.join(map(lambda x: str(x).rjust(2, '0'), nxt))
-        # for i in range(interv):
-        #     time.sleep(1)
-        #     if is_exit:
-        #         print '\ntrying to stop...'
-        #         p.terminate()
-        #         print 'done'
-        #         sys.exit()
         while True:
             time.sleep(0.5)
             if is_exit:
