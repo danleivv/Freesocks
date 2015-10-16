@@ -8,9 +8,9 @@ setup(
     author = 'danlei',
     author_email = 'jne0915@gmail.com',
     url = 'https://github.com/jne0915/freesocks',
-    package = find_packages(),
+    packages = find_packages(),
     install_requires = ['shadowsocks'],
-    entry_point = """
+    entry_points = """
     [console_script]
     freesocks = freesocks.myss:main
     """,
