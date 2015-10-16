@@ -1,7 +1,7 @@
 Freesocks (under building)
 ========
 
-A free way to get through the GFW based on Shadowsocks, just for myself.<br>
+A free way to get through the GFW based on Shadowsocks.<br>
 Thanks to the trial accounts on socks163.com.<br>
 Special thanks to SHADOWSOCKS.
 
