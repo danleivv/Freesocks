@@ -1,26 +1,26 @@
-Freesocks (under building)
-========
+# Freesocks (under building)
 
 A free way to get through the GFW based on Shadowsocks.<br>
 Thanks to the trial accounts on [socks163.com](http://www.socks163.com/).<br>
 Special thanks to SHADOWSOCKS.
 
-Install
-------
-`python setup.py install`<br><br>
+## Installation
+```bash
+python setup.py install
+```
 Openssl is required.
 
-Usage
-------
-`freesocks [local_port]`<br><br>
+## Usage
+```bash
+freesocks [local_port]
+```
 a socks5 agent on default port 1080.
 
-License
-------
-[MIT](http://opensource.org/licenses/MIT)
+## License
 
-Todo List
-------
+[zio] use [SATA License](LICENSE.txt) (Star And Thank Author License) by [zTrix](https://github.com/zTrix), so you have to star this project before using. Read the [license](LICENSE.txt) carefully.
+
+## Todo List
 * network state detection & auto reconnect
 * add exception handler on Windows
 
