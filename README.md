@@ -14,11 +14,11 @@ Openssl is required.
 ```bash
 freesocks [local_port]
 ```
-a socks5 agent on default port 1080.
+Freesocks launches a socks5 agent on a local port (1080 for default).
 
 ## License
 
-Freesocks use [SATA License](LICENSE.txt) (Star And Thank Author License) by [zTrix](https://github.com/zTrix), so you have to star this project before using. Read the [license](LICENSE.txt) carefully.
+Freesocks uses [SATA License](LICENSE.txt) (Star And Thank Author License) by [zTrix](https://github.com/zTrix), so you have to star this project before using. Read the [license](LICENSE.txt) carefully.
 
 ## Update Info
 
