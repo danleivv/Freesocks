@@ -98,7 +98,6 @@ def main():
                 print 'done'
                 sys.exit()
             if time.localtime() >= end_time:
-                print time.localtime()
                 p.terminate()
                 break
 
