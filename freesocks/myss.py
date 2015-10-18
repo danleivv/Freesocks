@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding:utf-8 -*-
 from HTMLParser import HTMLParser
 from optparse import OptionParser
 import urllib2, json, random, sys, time, subprocess, signal
@@ -28,7 +29,7 @@ class codeParser(HTMLParser):
                 self.code[self.cnt/4][self.key[self.cnt%4]] = self.data.strip()
                 self.cnt += 1
             if tag == 'p':
-                self.time = self.data.strip().split()[-1]
+                self.time = self.data.strip().split()
             self.data = ''
             self.processing = None
 
@@ -73,15 +74,21 @@ def main():
         if len(sys.argv) > 1:
             config['local_port'] = int(sys.argv[1])
         json.dump(config, open('config.json', 'w'))
-        now = time.localtime()[3:6]
-        nxt = map(int, parser.time.split(':'))
-        nxt[0] += 1
 
-        print 'password was posted at ' + parser.time
+        start_date = '-'.join(map(lambda x: x[-4:], parser.time[0].split('-')))
+
+        start_time = time.strptime(start_date + ' ' + parser.time[1], '%Y-%m-%d %X')
+        end_time = time.gmtime(time.mktime(start_time) + 3600 * 9)        # convert to UTC+8
+
+        print 'password was posted at ' + time.strftime('%X', start_time)
         print 'trying to connect the server %s ...' % config['server']
-        p = subprocess.Popen('sslocal', stdout=subprocess.PIPE)
+        try:
+            p = subprocess.Popen('sslocal', stdout=subprocess.PIPE)
+        except:
+            print 'something wrong with sslocal'
+            continue
         print 'connection established'
-        print 'password is to be refresh at ' + ':'.join(map(lambda x: str(x).rjust(2, '0'), nxt))
+        print 'password is to be refresh at ' + time.strftime('%X', end_time)
 
         while True:
             time.sleep(0.5)
@@ -90,8 +97,8 @@ def main():
                 p.terminate()
                 print 'done'
                 sys.exit()
-            now = time.localtime()[3:6]
-            if now[0] == nxt[0] and now[1] == nxt[1] and now[2] == nxt[2]:
+            if time.localtime() >= end_time:
+                print time.localtime()
                 p.terminate()
                 break
 
