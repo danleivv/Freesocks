@@ -16,13 +16,13 @@ class codeParser(HTMLParser):
         self.data = ''
         HTMLParser.__init__(self)
 
-    def handle_starttag(self, tag, attrs): 
+    def handle_starttag(self, tag, attrs):
         if tag == 'code':
             self.processing = 'code'
         if tag == 'p' and len(attrs) > 0:
             self.processing = 'p'
 
-    def handle_endtag(self, tag): 
+    def handle_endtag(self, tag):
         if tag == self.processing:
             if tag == 'code':
                 self.code[self.cnt/4][self.key[self.cnt%4]] = self.data.strip()
@@ -32,7 +32,7 @@ class codeParser(HTMLParser):
             self.data = ''
             self.processing = None
 
-    def handle_data(self, data): 
+    def handle_data(self, data):
         if self.processing:
             self.data += data
 
@@ -48,8 +48,25 @@ is_exit = False
 def main():
     while True:
         parser = codeParser()
-        url = urllib2.urlopen('http://www.socks163.com')
-        parser.feed(url.read())
+        print 'trying to collect passwords...'
+        tag = False
+        while True:
+            try:
+                url = urllib2.urlopen('http://www.socks163.com')
+            except urllib2.URLError:
+                if not tag:
+                    print 'connection to socks163.com failed'
+                    print 'reconnecting...'
+                tag = True
+                if is_exit:
+                    sys.exit()
+                time.sleep(2)
+            else:
+                print 'received response from socks163.com'
+                parser.feed(url.read())
+                break
+
+
         config = parser.code[random.randint(0, 2)]
         config['local_port'] = 1080
         config['timeout'] = 300
@@ -59,11 +76,13 @@ def main():
         now = time.localtime()[3:6]
         nxt = map(int, parser.time.split(':'))
         nxt[0] += 1
+
         print 'password was posted at ' + parser.time
-        print 'trying to connect...'
+        print 'trying to connect the server %s ...' % config['server']
         p = subprocess.Popen('sslocal', stdout=subprocess.PIPE)
-        print 'connection succeed'
+        print 'connection established'
         print 'password is to be refresh at ' + ':'.join(map(lambda x: str(x).rjust(2, '0'), nxt))
+
         while True:
             time.sleep(0.5)
             if is_exit:
@@ -75,7 +94,7 @@ def main():
             if now[0] == nxt[0] and now[1] == nxt[1] and now[2] == nxt[2]:
                 p.terminate()
                 break
-        
+
         time.sleep(1)
 
 if __name__ == '__main__':
