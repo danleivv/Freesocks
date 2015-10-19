@@ -8,11 +8,10 @@ Special thanks to SHADOWSOCKS.
 ```bash
 python setup.py install
 ```
-Openssl is required.
 
 ## Usage
 ```bash
-freesocks [local_port]
+freesocks [<local_port>]
 ```
 Freesocks launches a socks5 agent on a local port (1080 for default).
 
@@ -34,6 +33,6 @@ Freesocks uses [SATA License](LICENSE.txt) (Star And Thank Author License) by [z
 
 
 ## Todo List
-* set timeout for user's input in reconnection
+* add option parser
 
 
