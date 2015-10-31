@@ -11,8 +11,16 @@ python setup.py install
 
 ## Usage
 ```bash
-freesocks [<local_port>]
+freesocks [OPTION]...
 ```
+
+Options:
+  --version      show program's version number and exit
+  -h, --help     show this help message and exit
+  -l LOCAL_PORT  local binding port, default: 1080
+  -t TIMEOUT     timeout in seconds, default: 300
+  -r REFRESH     refresh interval in seconds, default: 3600
+
 Freesocks launches a socks5 agent on a local port (1080 for default).
 
 ## License
@@ -24,6 +32,7 @@ Freesocks uses [SATA License](LICENSE.txt) (Star And Thank Author License) by [z
 ### 0.1.3
 * add option parser
 * use args in command line when invoking `sslocal` instead of making json file
+* customized refresh interval is supported
 
 ### 0.1.2
 * add exception handler to reconnect automatically when network interrupts.

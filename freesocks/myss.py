@@ -89,7 +89,7 @@ def main():
 
         start_time = time.strptime(start_date + ' ' + cparser.time[1], '%Y-%m-%d %X')
         end_time = time.gmtime(time.mktime(start_time) + 3600 * 9)        # convert to UTC+8
-        refresh_time = time.gmtime(time.mktime(time.localtime) + 3600 * 8 + option.refresh)
+        refresh_time = time.gmtime(time.mktime(time.localtime()) + 3600 * 8 + option.refresh)
 
         print 'password was posted at ' + time.strftime('%X', start_time)
         print 'trying to connect the server %s ...' % config['s']
