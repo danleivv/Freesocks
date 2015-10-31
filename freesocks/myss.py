@@ -61,7 +61,7 @@ def main():
     parser = OptionParser('usage: freesocks [OPTION]...', version='0.1.3')
     parser.add_option('-l', dest='local_port', metavar='LOCAL_PORT', type='int', default=1080, help='local binding port, default: 1080')
     parser.add_option('-t', dest='timeout', metavar='TIMEOUT', type='int', default=300, help='timeout in seconds, default: 300')
-    # parser.add_option('-r', dest='refresh', metavar='REFRESH', type='int', default=3600, help='refresh interval in seconds, default: 3600')
+    parser.add_option('-r', dest='refresh', metavar='REFRESH', type='int', default=3600, help='refresh interval in seconds, default: 3600')
     option, _ = parser.parse_args()
 
     while True:
@@ -89,6 +89,7 @@ def main():
 
         start_time = time.strptime(start_date + ' ' + cparser.time[1], '%Y-%m-%d %X')
         end_time = time.gmtime(time.mktime(start_time) + 3600 * 9)        # convert to UTC+8
+        refresh_time = time.gmtime(time.mktime(time.localtime) + 3600 * 8 + option.refresh)
 
         print 'password was posted at ' + time.strftime('%X', start_time)
         print 'trying to connect the server %s ...' % config['s']
@@ -112,7 +113,7 @@ def main():
                 p.terminate()
                 print 'done'
                 sys.exit()
-            if time.localtime() >= end_time:
+            if time.localtime() >= end_time or time.localtime() >= refresh_time:
                 p.terminate()
                 break
 
