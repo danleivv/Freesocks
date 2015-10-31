@@ -14,12 +14,12 @@ python setup.py install
 freesocks [OPTION]...
 ```
 
-Options:
-  --version      show program's version number and exit
-  -h, --help     show this help message and exit
-  -l LOCAL_PORT  local binding port, default: 1080
-  -t TIMEOUT     timeout in seconds, default: 300
-  -r REFRESH     refresh interval in seconds, default: 3600
+Options:<br>
+  --version      show program's version number and exit<br>
+  -h, --help     show this help message and exit<br>
+  -l LOCAL_PORT  local binding port, default: 1080<br>
+  -t TIMEOUT     timeout in seconds, default: 300<br>
+  -r REFRESH     refresh interval in seconds, default: 3600<br>
 
 Freesocks launches a socks5 agent on a local port (1080 for default).
 
