@@ -22,7 +22,7 @@ Options:
   -t TIMEOUT     timeout in seconds, default: 300
   -r REFRESH     refresh interval in seconds, default: 3600
 ```
-Freesocks launches a socks5 agent on a local port (1080 for default).
+Freesocks launches a socks5 agent on a local port.
 
 ## License
 
