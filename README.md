@@ -21,6 +21,10 @@ Freesocks uses [SATA License](LICENSE.txt) (Star And Thank Author License) by [z
 
 ## Update Info
 
+### 0.1.3
+* add option parser
+* use args in command line when invoking `sslocal` instead of making json file
+
 ### 0.1.2
 * add exception handler to reconnect automatically when network interrupts.
 * change the license to SATA
@@ -30,9 +34,3 @@ Freesocks uses [SATA License](LICENSE.txt) (Star And Thank Author License) by [z
 
 ### 0.1.0
 * primary post
-
-
-## Todo List
-* add option parser
-
-
