@@ -94,9 +94,7 @@ def main():
         print 'password was posted at ' + time.strftime('%X', start_time)
         print 'trying to connect the server %s ...' % config['s']
 
-        args = ['sslocal']
-        for key in config.keys():
-            args += ['-' + key] + [config[key]]
+        args = ['sslocal'] + reduce(lambda x, y: x + y, map(lambda x: ['-' + x, config[x]], config.keys()))
 
         try:
             p = subprocess.Popen(args, stdout=subprocess.PIPE)
