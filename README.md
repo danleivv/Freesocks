@@ -1,5 +1,6 @@
 # Freesocks
-血崩了 socks163不能爬了
+血崩了 socks163不能爬了<br>
+过几天写完作业换个网站好了<br>
 A free way to get through the GFW based on Shadowsocks.<br>
 Thanks to the trial accounts on [socks163.com](http://www.socks163.com/).<br>
 Special thanks to SHADOWSOCKS.
