@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'freesocks',
-    version = '0.1.3',
+    version = '0.1.4',
     license = 'SATA',
     description = 'free way to get through the GFW based on Shadowsocks, just for myself',
     author = 'danlei',

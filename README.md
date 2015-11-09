@@ -1,8 +1,7 @@
 # Freesocks
-血崩了 socks163不能爬了<br>
-过几天写完作业换个网站好了<br>
+
 A free way to get through the GFW based on Shadowsocks.<br>
-Thanks to the trial accounts on [socks163.com](http://www.socks163.com/).<br>
+Thanks to the trial accounts on [ishadowsocks.com](http://www.ishadowsocks.com/).<br>
 Special thanks to SHADOWSOCKS.
 
 ## Installation
@@ -30,6 +29,10 @@ Freesocks launches a socks5 agent on a local port.
 Freesocks uses [SATA License](LICENSE.txt) (Star And Thank Author License) by [zTrix](https://github.com/zTrix), so you have to star this project before using. Read the [license](LICENSE.txt) carefully.
 
 ## Update Info
+
+### 0.1.4
+* use free account on [ishadowsocks.com](http://www.ishadowsocks.com/)
+* test the proxy and reconnect automatically when 'Broken Pipe' occurs in every 5 sec
 
 ### 0.1.3
 * add option parser
