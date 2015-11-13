@@ -37,9 +37,9 @@ class s163Parser(HTMLParser):
         }
 
     def login(self, user='', passwd=''):
-        if user  and passwd:
-             self.payload['username'] = user
-             self.payload['password'] = passwd
+        if user and passwd:
+            self.payload['username'] = user
+            self.payload['password'] = passwd
         url = "http://www.socks163.com/user.php?action=login"
         try:
             response = self.session.post(url, headers=self.headers, data=self.payload)
@@ -49,14 +49,14 @@ class s163Parser(HTMLParser):
             return response.content
 
     def handle_starttag(self, tag, attrs):
-        if tag == 'tbody':
+        if not self.processing and tag == 'tbody':
             self.processing = 'tbody'
         if tag == 'th' and self.processing == 'tbody':
             self.processing = 'th'
 
     def handle_endtag(self, tag):
         if tag == 'tbody':
-            self.processing = None
+            self.processing = 'done'
         if tag == 'th':
             self.processing = 'tbody'
             self.value.append(self.data)
@@ -70,13 +70,14 @@ class s163Parser(HTMLParser):
         page = self.login()
         if page:
             self.feed(page)
-            self.config['time'] = self.value[-1]
-            for k, v in zip(self.key, self.value[-4:-1]):
+            self.config['time'] = self.value[9]
+            for k, v in zip(self.key, self.value[5:9]):
                 self.config[k] = v
         return self.config
 
 
 class issParser(HTMLParser):
+
     def __init__(self):
         self.processing = None
         self.code = [{}, {}, {}]
@@ -97,7 +98,6 @@ class issParser(HTMLParser):
                 self.cnt += 1
             self.data = ''
             self.processing = None
-
 
     def handle_data(self, data):
         if self.processing:
