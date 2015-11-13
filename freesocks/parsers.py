@@ -2,52 +2,78 @@
 # -*- coding:utf-8 -*-
 
 from HTMLParser import HTMLParser
-import urllib2, random
+import urllib2, random, requests
+
+#from bs4 import BeautifulSoup
+
 
 class s163Parser(HTMLParser):
+    """The login module is authored by hxer.
+
+    """
 
     def __init__(self):
-        # self.handledtags = ['code', 'p']
         self.processing = None
-        self.code = [{}, {}, {}]
-        self.key = ['s', 'p', 'k', 'm']
-        self.cnt = 0
+        self.key = ['-s', '-p', '-k']
+        self.value = []
         self.time = ''
         self.data = ''
+        self.config = {
+            'url': 'socks163.com',
+        }
+        self.httpInit()
         HTMLParser.__init__(self)
 
+    def httpInit(self):
+        self.session = requests.Session()
+        self.headers =  {
+            "User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:42.0) Gecko/20100101 Firefox/42.0",
+            "Connection": "keep-alive"
+        }
+        # default username and password
+        self.payload = {
+            "username": "s163",
+            "password": "socks163",
+        }
+
+    def login(self, user='', passwd=''):
+        if user  and passwd:
+             self.payload['username'] = user
+             self.payload['password'] = passwd
+        url = "http://www.socks163.com/user.php?action=login"
+        try:
+            response = self.session.post(url, headers=self.headers, data=self.payload)
+        except requests.exceptions.RquestException as e:
+            return None
+        else:
+            return response.content
+
     def handle_starttag(self, tag, attrs):
-        if tag == 'code':
-            self.processing = 'code'
-        if tag == 'p' and len(attrs) > 0:
-            self.processing = 'p'
+        if tag == 'tbody':
+            self.processing = 'tbody'
+        if tag == 'th' and self.processing == 'tbody':
+            self.processing = 'th'
 
     def handle_endtag(self, tag):
-        if tag == self.processing:
-            if tag == 'code':
-                self.code[self.cnt/4][self.key[self.cnt%4]] = self.data.strip()
-                self.cnt += 1
-            if tag == 'p':
-                self.time = self.data.strip().split()
-            self.data = ''
+        if tag == 'tbody':
             self.processing = None
+        if tag == 'th':
+            self.processing = 'tbody'
+            self.value.append(self.data)
+            self.data = ''
 
     def handle_data(self, data):
-        if self.processing:
+        if self.processing == 'th':
             self.data += data
 
     def get_config(self):
-        try:
-            url = urllib2.urlopen('http://www.socks163.com')
-        except urllib2.URLError:
-            return None
-        else:
-            self.feed(url.read())
-            config = self.code[random.randint(0, 2)]
-            return config
-
-    def __str__(self):
-        return 'socks163.com'
+        page = self.login()
+        if page:
+            self.feed(page)
+            self.config['time'] = self.value[-1]
+            for k, v in zip(self.key, self.value[-4:-1]):
+                self.config[k] = v
+        return self.config
 
 
 class issParser(HTMLParser):
@@ -86,11 +112,8 @@ class issParser(HTMLParser):
             self.feed(url.read())
             return self.code
 
-    def __str__(self):
-        return 'ishadowsocks.com'
-
 
 if __name__ == '__main__':
-    cparser = issParser()
+    cparser = s163Parser()
     print cparser.get_config()
 
