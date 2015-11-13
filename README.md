@@ -1,7 +1,7 @@
 # Freesocks
 
 A free way to get through the GFW based on Shadowsocks.<br>
-Thanks to the trial accounts on [ishadowsocks.com](http://www.ishadowsocks.com/).<br>
+Thanks to the trial accounts on [socks163.com](http://socks163.com/), who seems not happy T_T<br>
 Special thanks to SHADOWSOCKS.
 
 ## Installation
@@ -20,7 +20,6 @@ Options:
   -h, --help     show this help message and exit
   -l LOCAL_PORT  local binding port, default: 1080
   -t TIMEOUT     timeout in seconds, default: 300
-  -r REFRESH     refresh interval in seconds, default: 3600
 ```
 Freesocks launches a socks5 agent on a local port.
 
@@ -29,6 +28,11 @@ Freesocks launches a socks5 agent on a local port.
 Freesocks uses [SATA License](LICENSE.txt) (Star And Thank Author License) by [zTrix](https://github.com/zTrix), so you have to star this project before using. Read the [license](LICENSE.txt) carefully.
 
 ## Update Info
+
+### 0.1.5
+* remove `-r` option
+* fix severe bugs
+* use free account on [socks163.com](http://socks163.com/)
 
 ### 0.1.4
 * use free account on [ishadowsocks.com](http://www.ishadowsocks.com/)
