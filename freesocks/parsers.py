@@ -43,7 +43,7 @@ class s163Parser(HTMLParser):
         url = "http://www.socks163.com/user.php?action=login"
         try:
             response = self.session.post(url, headers=self.headers, data=self.payload)
-        except requests.exceptions.RquestException as e:
+        except Exception:
             return None
         else:
             return response.content
