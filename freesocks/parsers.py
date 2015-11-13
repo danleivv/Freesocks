@@ -71,7 +71,7 @@ class s163Parser(HTMLParser):
         if page:
             self.feed(page)
             self.config['time'] = self.value[9]
-            for k, v in zip(self.key, self.value[5:9]):
+            for k, v in zip(self.key, self.value[6:9]):
                 self.config[k] = v
         return self.config
 
