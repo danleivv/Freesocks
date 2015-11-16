@@ -70,7 +70,7 @@ class s163Parser(HTMLParser):
         page = self.login()
         if page:
             self.feed(page)
-            self.config['time'] = self.value[9]
+            # self.config['time'] = self.value[9]
             for k, v in zip(self.key, self.value[6:9]):
                 self.config[k] = v
         return self.config

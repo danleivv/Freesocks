@@ -44,8 +44,8 @@ def main():
         configs['-l'] = str(option.local_port)
         configs['-t'] = str(option.timeout)
 
-        start_time = time.strptime(configs['time'], '%Y-%m-%d %X')
-        end_time = time.gmtime(time.mktime(start_time) + 3600 * 9)        # convert to UTC+8
+        # start_time = time.strptime(configs['time'], '%Y-%m-%d %X')
+        # end_time = time.gmtime(time.mktime(start_time) + 3600 * 9)        # convert to UTC+8
 
         print 'trying to connect the server %s ...' % configs['-s']
 
@@ -57,7 +57,7 @@ def main():
             print 'something wrong with sslocal'
             continue
         print 'connection established'
-        print 'password is to be refreshed at ' + time.strftime('%X', end_time)
+        # print 'password is to be refreshed at ' + time.strftime('%X', end_time)
 
         while True:
             time.sleep(0.5)
@@ -66,9 +66,9 @@ def main():
                 p.terminate()
                 print 'freesocks stopped'
                 sys.exit()
-            if time.localtime() >= end_time:
-                p.terminate()
-                break
+            # if time.localtime() >= end_time:
+            #     p.terminate()
+            #     break
 
         time.sleep(1)
 
