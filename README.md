@@ -2,7 +2,7 @@
 
 A free way to get through the GFW based on Shadowsocks.<br>
 Thanks to the trial accounts on [socks163.com](http://socks163.com/), who seems not happy T_T<br>
-Special thanks to SHADOWSOCKS.
+To be continue in winter vacation.
 
 ## Installation
 ```bash
